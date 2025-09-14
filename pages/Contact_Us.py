@@ -1,5 +1,5 @@
 import streamlit as st
-                                
+from send_emails import send_email                              
 
 st.header("Contact Me")
 
@@ -8,9 +8,9 @@ with st.form(key="emailer"):
 
     user_message = st.text_area("Your message:")
     button = st.form_submit_button("Submit")
+    message = "Subject: Philip Joseph" + "\n" + user_email + "\n" + user_message
     if button:
-       message = f"""Subject: Philip Joseph
-       This was sent from {'[{user_email}]({user_email})'}
-            '{user_message}'
-        """
        
+        send_email(user_message=message)
+       
+        
